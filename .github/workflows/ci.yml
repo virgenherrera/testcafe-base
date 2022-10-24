@@ -21,24 +21,11 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - shell: bash
-        env:
-          TESTCAFE_EXAMPLE_PAGE: ${{ secrets.TESTCAFE_EXAMPLE_PAGE }}
-          TESTCAFE_EXAMPLE_USER: ${{ secrets.TESTCAFE_EXAMPLE_USER }}
-        run: |
-          echo "page ""$TESTCAFE_EXAMPLE_PAGE" "user " "$TESTCAFE_EXAMPLE_USER"
-
-      - name: Use a repo or org secret from the calling workflow.
-        run: echo "page "${{ secrets.TESTCAFE_EXAMPLE_PAGE }} "user " ${{ secrets.TESTCAFE_EXAMPLE_USER }}
-
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
           cache: "npm"
-        env:
-          TESTCAFE_EXAMPLE_PAGE: ${{ secrets.TESTCAFE_EXAMPLE_PAGE }}
-          TESTCAFE_EXAMPLE_USER: ${{ secrets.TESTCAFE_EXAMPLE_USER }}
 
       - name: Install dependencies
         run: npm ci
@@ -54,4 +41,7 @@ jobs:
 
       - name: (test:) headless
         timeout-minutes: 15
+        env:
+          TESTCAFE_EXAMPLE_PAGE: ${{ secrets.TESTCAFE_EXAMPLE_PAGE }}
+          TESTCAFE_EXAMPLE_USER: ${{ secrets.TESTCAFE_EXAMPLE_USER }}
         run: npm run test:headless
