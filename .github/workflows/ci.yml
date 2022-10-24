@@ -21,6 +21,9 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
+      - name: Use a repo or org secret from the calling workflow.
+        run: echo "page "${{ secrets.TESTCAFE_EXAMPLE_PAGE }} "user " ${{ secrets.TESTCAFE_EXAMPLE_USER }}
+
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v3
         with:
