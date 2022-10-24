@@ -40,6 +40,7 @@ jobs:
         run: npm run check:ts
 
       - name: (test:) headless
+        uses: DevExpress/testcafe-action@latest
         timeout-minutes: 15
         env:
           TESTCAFE_EXAMPLE_PAGE: ${{ secrets.TESTCAFE_EXAMPLE_PAGE }}
