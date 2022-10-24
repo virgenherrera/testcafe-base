@@ -38,13 +38,3 @@ jobs:
 
       - name: (check:) Typescript project
         run: npm run check:ts
-
-      - name: Use Testcafe image
-        uses: DevExpress/testcafe-action@latest
-
-      - name: (test:) headless
-        timeout-minutes: 15
-        env:
-          TESTCAFE_EXAMPLE_PAGE: ${{ secrets.TESTCAFE_EXAMPLE_PAGE }}
-          TESTCAFE_EXAMPLE_USER: ${{ secrets.TESTCAFE_EXAMPLE_USER }}
-        run: npm run test:headless
