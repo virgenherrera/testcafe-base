@@ -21,6 +21,13 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
+      - shell: bash
+        env:
+          TESTCAFE_EXAMPLE_PAGE: ${{ secrets.TESTCAFE_EXAMPLE_PAGE }}
+          TESTCAFE_EXAMPLE_USER: ${{ secrets.TESTCAFE_EXAMPLE_USER }}
+        run: |
+          echo "page ""$TESTCAFE_EXAMPLE_PAGE" "user " "$TESTCAFE_EXAMPLE_USER"
+
       - name: Use a repo or org secret from the calling workflow.
         run: echo "page "${{ secrets.TESTCAFE_EXAMPLE_PAGE }} "user " ${{ secrets.TESTCAFE_EXAMPLE_USER }}
 
