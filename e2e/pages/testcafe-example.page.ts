@@ -72,3 +72,5 @@ export class TestcafeExamplePage {
     await t.click(this.submitButtonSelector);
   }
 }
+
+export default new TestcafeExamplePage();

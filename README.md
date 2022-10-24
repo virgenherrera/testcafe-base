@@ -4,13 +4,17 @@ basic [TestCafe](https://testcafe.io/) framework TypeScript starter repository.
 
 ## Installation
 
-1. install dependencies.
+### install dependencies
 
 ```bash
 npm install
 ```
 
-2. Create `.env` file using `.env.example`  a template, e.g.
+### Define Environment Variables
+
+either declaring it system level or defining an `.env` file in the top-level of this project.
+
+Create `.env` file using `.env.example`  a template, e.g.
 
 ```bash
 cp ./env.example ./env

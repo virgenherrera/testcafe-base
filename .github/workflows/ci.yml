@@ -26,15 +26,22 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
           cache: "npm"
+        env:
+          TESTCAFE_EXAMPLE_PAGE: ${{ secrets.TESTCAFE_EXAMPLE_PAGE }}
+          TESTCAFE_EXAMPLE_USER: ${{ secrets.TESTCAFE_EXAMPLE_USER }}
 
       - name: Install dependencies
         run: npm ci
 
-      - name: eslint Check Code Format
+      - name: (check:) eslint
         run: npm run check:eslint
 
-      - name: prettier Check Code Format
+      - name: (check:) prettier
         run: npm run check:prettier
 
-      - name: mock-Build Project
+      - name: (check:) Typescript project
         run: npm run check:ts
+
+      - name: (test:) headless
+        timeout-minutes: 15
+        run: npm run test:headless
